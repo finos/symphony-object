@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://symphonyosf.github.io/symphony-object/schema/core-types-v0_1.json",
+    "title": "Core Datatypes for Symphony Structured Objects aka EntityJSON",
+    "org.symphonyoss.object.attribute.string": {
+        "description": "An unbounded Unicode string value.",
+        "type": "string"
+    },
+    "org.symphonyoss.object.attribute.int16": {
+        "description": "16 bit signed integer value.",
+        "type": "integer",
+        "minimum":  -32768,
+        "maximum":  32767
+    },
+    "org.symphonyoss.object.attribute.int32": {
+        "description": "32 bit signed integer value.",
+        "type": "integer",
+        "minimum":  -2147483648,
+        "maximum":  2147483647
+    },
+    "org.symphonyoss.object.attribute.int54": {
+        "description": "54 bit signed integer value. This is the largest integer value which can be safely used in JavaScript",
+        "type": "integer",
+        "minimum":  -9007199254740992,
+        "maximum":  9007199254740991
+    },
+    "org.symphonyoss.object.attribute.time.millis": {
+        "description": "Time in milliseconds from Jan 1st 1970 represented as a 54 bit signed integer value. This can represent dates up to the year 287396.",
+        "type": "integer",
+        "minimum":  -9007199254740992,
+        "maximum":  9007199254740991
+    },
+    "org.symphonyoss.object.attribute.time.day": {
+        "description": "A date in the format YYYY-MM-DD. Intended for use when timezone precision is not required. Cases which require precision should use time.millis instead.",
+        "type": "string",
+        "pattern":  "^[0-9]{4}-((0[1-9])|(1[0-2]))-((0[1-9])|([12][0-9])|(3[01]))$"
+    },
+    "org.symphonyoss.object.attribute.time.month": {
+        "description": "A date in the format YYYY-MM. Intended for use when timezone precision is not required. Cases which require precision should use time.millis instead.",
+        "type": "string",
+        "pattern":  "^[0-9]{4}-((0[1-9])|(1[0-2]))$"
+    }
+}

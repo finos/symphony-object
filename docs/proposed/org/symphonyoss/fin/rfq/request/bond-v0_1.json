@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://symphonyosf.github.io/symphony-object/proposed/org/symphonyoss/fin/rfq/request/bond-v0_1.json",
+  "title": "An RFQ Request for a Bond",
+  "type": "object",
+  "allOf": [
+    
+    {
+      "$ref": "https://symphonyosf.github.io/symphony-object/schema/structured-object-v0_1.json"
+    }
+  ],
+      "properties": {
+        "id": {},
+        "type": {},
+        "version": {},
+        "side": {
+          "type": "string",
+          "enum": [
+            "BUY",
+            "SELL"
+          ]
+        },
+        "instrument": {
+          "type": "array",
+            "items": {
+                "$ref": "https://symphonyosf.github.io/symphony-object/schema/definitions-v0_1.json#/org.symphonyoss.object.id"
+            }
+        },
+        "tradeDate": {
+          "description": "The required date of the trade.",
+          "$ref": "https://symphonyosf.github.io/symphony-object/schema/core-types-v0_1.json#/org.symphonyoss.object.attribute.time.day"
+        },
+        "settlementDate": {
+          "description": "The required date for settlement of the trade.",
+          "$ref": "https://symphonyosf.github.io/symphony-object/schema/core-types-v0_1.json#/org.symphonyoss.object.attribute.time.day"
+        },
+        "faceValue": {
+          "description": "The amount or value of the trade that is offiered. In the currency of the instrument.",
+          "type": "number"
+        },
+        
+        "info": {
+          "description": "Informational data for the convenience of recipients who are unable to look this up from a primary source. If values in this object conflict with the implied values from the security ID given then the recipient MAY ignore this data or MAY reject the request as invalid.",
+          "type": "object",
+          "properties": {
+            "description": {
+              "description": "A free text description of the required bond.",
+              "type": "string"
+            },
+            "assetType": {
+              "description": "The asset type of the required bond.",
+              "type": "string"
+            },
+            "accruedInterest": {
+              "description": "The amount or accrued interest. In the currency of the instrument.",
+              "type": "number"
+            },
+            "coupon": {
+              "description": "TBD",
+              "type": "number"
+            },
+            "maturityDate": {
+              "description": "The maturity date of the bond.",
+              "$ref": "https://symphonyosf.github.io/symphony-object/schema/core-types-v0_1.json#/org.symphonyoss.object.attribute.time.day"
+            },
+            "currency": {
+              "description": "The currency of the bond.",
+              "$ref": "https://symphonyosf.github.io/symphony-object/schema/org/symphonyoss/fin/types-v0_1.json#/org.symphonyoss.fin.ccy.id.iso4217"
+            },
+            "issuer": {
+              "description": "The issuer of the required bond.",
+              "type": "array",
+              "items": {
+                  "$ref": "https://symphonyosf.github.io/symphony-object/schema/definitions-v0_1.json#/org.symphonyoss.object.id"
+              }
+            },
+            "ratings": {
+              "description": "Description of ratings for the required bond.",
+              "type": "array",
+              "items": {
+                  "$ref": "https://symphonyosf.github.io/symphony-object/schema/definitions-v0_1.json#/org.symphonyoss.object.id"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "side"
+      ],
+    "additionalProperties": false
+}

@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://symphonyosf.github.io/symphony-object/schema/entity-json-v0_1.json",
+    "title": "A collection of Symphony Structured Objects aka EntityJSON",
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "format": "uri"
+        }
+    },
+    "patternProperties": {
+        "^\\$test-[a-zA-Z0-9_-]*$": {
+            "type": "object",
+            "properties": {
+                "description":  {
+                    "type": "string"
+                },
+                "org.symphonyoss.object.attribute.string": {
+                    "$ref": "https://symphonyosf.github.io/symphony-object/schema/core-types-v0_1.json#/org.symphonyoss.object.attribute.string"
+                }
+            }
+        },
+        "^[a-zA-Z0-9].*$": {
+            "$ref": "https://symphonyosf.github.io/symphony-object/schema/structured-object-v0_1.json"
+        }
+    },
+    "additionalProperties": false
+}

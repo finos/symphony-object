@@ -1,0 +1,27 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "https://symphonyosf.github.io/symphony-object/schema/definitions-v0_1.json",
+	"title": "Standard definitions for Symphony Structured Objects aka EntityJSON",
+	"org.symphonyoss.object.attribute.type": {
+		"description": "An attribute type identifier.",
+		"type": "string",
+		"pattern": "(^[a-zA-Z]+(\\.[a-zA-Z]+)*$)|(^http://[a-zA-Z][a-zA-Z.]*$)"
+	},
+	"org.symphonyoss.object.id": {
+		"description": "An object type identifier.",
+		"type": "object",
+		"properties": {
+			"type": {
+				"$ref": "#/org.symphonyoss.object.attribute.type"
+			},
+			"value": {
+				"type": "string"
+			}
+		},
+		"required": [
+			"type",
+			"value"
+		],
+		"additionalProperties": false
+	}
+}
